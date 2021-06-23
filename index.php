@@ -114,5 +114,18 @@ $result = $statement->fetchAll();
                 }
             })
         });
+        $(document).on('click', '.badge', function() {
+            var task_list_id = $(this).data('id');
+            $.ajax({
+                url: "delete_task.php",
+                method: "POST",
+                data: {
+                    task_list_id: task_list_id
+                },
+                success: function(data) {
+                    $('#list-group-item-' + task_list_id).fadeOut('slow');
+                }
+            })
+        });
     });
 </script>
